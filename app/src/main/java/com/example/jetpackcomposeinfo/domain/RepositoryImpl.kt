@@ -7,7 +7,7 @@ import com.example.jetpackcomposeinfo.utils.Resource
 
 class RepositoryImpl(private val dataSource:DataSource):Repository {
 
-    override suspend fun getTeams(): Resource<ReqNBA> {
+    override suspend fun getTeams():  Resource<List<Team>> {
         return  dataSource.getTeams()
     }
 

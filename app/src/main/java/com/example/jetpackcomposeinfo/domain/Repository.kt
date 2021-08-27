@@ -6,7 +6,7 @@ import com.example.jetpackcomposeinfo.utils.Resource
 
 interface Repository {
 
-    suspend fun getTeams(): Resource<ReqNBA>
+    suspend fun getTeams(): Resource<List<Team>>
     suspend fun getTeam(id: Int) : Resource<Team>
 
 }
