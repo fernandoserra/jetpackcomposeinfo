@@ -1,6 +1,7 @@
 package com.example.jetpackcomposeinfo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -11,12 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.data.remote.DataSourceImpl
 import com.example.jetpackcomposeinfo.domain.RepositoryImpl
 import com.example.jetpackcomposeinfo.presentation.DataVMFactory
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
 import com.example.jetpackcomposeinfo.ui.theme.JetpackComposeInfoTheme
 import com.example.jetpackcomposeinfo.utils.Resource
+import kotlin.math.log
 
 class MainActivity : ComponentActivity() {
 
@@ -34,11 +37,26 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
 }
 
 @Composable
 fun ShowList(viewModel: DataViewModel){
     val result  by viewModel.getTeams.observeAsState(Resource.Success(emptyList()))
+
+    when(result){
+        is Resource.Failure ->{
+
+        }
+        is Resource.Loading ->{
+
+        }
+        is Resource.Success ->{
+            Log.i("MainActiviy", "ShowList:  ${(result as Resource.Success<List<Team>>).data.size}")
+        }
+    }
+
 }
 
 @Composable
@@ -53,3 +71,4 @@ fun DefaultPreview() {
         Greeting("Android")
     }
 }
+
