@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.data.remote.DataSourceImpl
 import com.example.jetpackcomposeinfo.domain.RepositoryImpl
@@ -22,12 +24,16 @@ import com.example.jetpackcomposeinfo.ui.home.TeamCard
 import com.example.jetpackcomposeinfo.ui.theme.JetpackComposeInfoTheme
 import com.example.jetpackcomposeinfo.utils.Resource
 
+@ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
 
     val viewModel by viewModels<DataViewModel>{ DataVMFactory(RepositoryImpl(DataSourceImpl())) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Design_NoActionBar)
         super.onCreate(savedInstanceState)
+
+        installSplashScreen()
         setContent {
             JetpackComposeInfoTheme {
                 // A surface container using the 'background' color from the theme
