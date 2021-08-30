@@ -5,7 +5,6 @@ import com.example.jetpackcomposeinfo.data.model.ReqNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface WebService {
 
@@ -17,6 +16,5 @@ interface WebService {
 
     @GET("games?seasons[]={seasons}&team_ids[]={id}")
     suspend fun getGamesTeam(@Path("seasons") seasons: Int, @Path("id") id: Int): ReqGamesNBA
-
 
 }
