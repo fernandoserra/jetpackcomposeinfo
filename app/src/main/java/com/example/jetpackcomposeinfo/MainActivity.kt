@@ -15,12 +15,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.data.remote.DataSourceImpl
 import com.example.jetpackcomposeinfo.domain.RepositoryImpl
 import com.example.jetpackcomposeinfo.presentation.DataVMFactory
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
 import com.example.jetpackcomposeinfo.ui.home.TeamCard
+import com.example.jetpackcomposeinfo.ui.navigation.MainScreen
+import com.example.jetpackcomposeinfo.ui.navigation.NavigationItem
 import com.example.jetpackcomposeinfo.ui.theme.JetpackComposeInfoTheme
 import com.example.jetpackcomposeinfo.utils.Resource
 
@@ -38,12 +43,15 @@ class MainActivity : ComponentActivity() {
             JetpackComposeInfoTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    ShowList(viewModel)
+                    MainScreen(viewModel)
+                    //ShowList(viewModel)
                 }
             }
         }
     }
 }
+
+
 
 @Composable
 fun ShowList(viewModel: DataViewModel){
