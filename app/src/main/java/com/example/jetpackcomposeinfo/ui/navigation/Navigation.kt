@@ -59,11 +59,13 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
 
     NavHost(navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
-            //HomeScreen()
             ShowList(viewModel)
         }
         composable(NavigationItem.Favorites.route) {
-            //MusicScreen()
+
+        }
+        composable(NavigationItem.Info.route) {
+
         }
     }
 }
