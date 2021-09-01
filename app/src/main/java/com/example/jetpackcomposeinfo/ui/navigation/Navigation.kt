@@ -13,12 +13,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcomposeinfo.ShowList
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
+import com.example.jetpackcomposeinfo.ui.favorites.FavoriteView
+import com.example.jetpackcomposeinfo.ui.info.Info
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         NavigationItem.Home,
-        NavigationItem.Favorites
+        NavigationItem.Favorites,
+        NavigationItem.Info
     )
     BottomNavigation(
         //backgroundColor = colorResource(id = R.color.design_default_color_primary),
@@ -62,10 +65,10 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
             ShowList(viewModel)
         }
         composable(NavigationItem.Favorites.route) {
-
+            FavoriteView()
         }
         composable(NavigationItem.Info.route) {
-
+            Info()
         }
     }
 }
