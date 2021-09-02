@@ -1,5 +1,6 @@
 package com.example.jetpackcomposeinfo.ui.navigation
 
+import android.util.Log
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -13,6 +14,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcomposeinfo.ShowList
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
+import com.example.jetpackcomposeinfo.ui.details.DetailsTeam
 import com.example.jetpackcomposeinfo.ui.favorites.FavoriteView
 import com.example.jetpackcomposeinfo.ui.info.Info
 
@@ -62,7 +64,13 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
 
     NavHost(navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
-            ShowList(viewModel)
+            ShowList(viewModel,navController)
+        }
+        composable("${NavigationItem.Details.route}/{id}") {
+            it.arguments?.getString("id")?.let { idTeam ->
+                DetailsTeam(idTeam)
+            }
+
         }
         composable(NavigationItem.Favorites.route) {
             FavoriteView()
@@ -76,9 +84,18 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
 @Composable
 fun MainScreen(viewModel: DataViewModel) {
     val navController = rememberNavController()
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+
     Scaffold(
         topBar = {  }, //TopBar()
-        bottomBar = { BottomNavigationBar(navController) }
+        bottomBar = {
+            if (currentRoute != "details/{id}") {
+                BottomNavigationBar(navController)
+            }
+        }
     ) {
         NavigationComponent(navController,viewModel)
     }

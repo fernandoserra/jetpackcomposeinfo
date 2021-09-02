@@ -7,14 +7,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -54,7 +58,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun ShowList(viewModel: DataViewModel){
+fun ShowList(viewModel: DataViewModel,navController: NavController){
     val result  by viewModel.getTeams.observeAsState(Resource.Success(emptyList()))
 
     when(result){
@@ -66,20 +70,22 @@ fun ShowList(viewModel: DataViewModel){
         }
         is Resource.Success ->{
             Log.i("MainActiviy", "ShowList:  ${(result as Resource.Success<List<Team>>).data.size}")
-            RvTeams(team= (result as Resource.Success<List<Team>>).data)
+            RvTeams(team= (result as Resource.Success<List<Team>>).data,navController)
         }
     }
 
 }
 
 @Composable
-fun RvTeams(team:List<Team>){
+fun RvTeams(team:List<Team>,navController: NavController){
     val context = LocalContext.current
-    LazyColumn{
+    LazyColumn(Modifier.padding(bottom = 60.dp)){
         items(team.size) { dat->
             TeamCard(team = team[dat], onDatosClick = {
-                Toast.makeText(context, "Equipo ${it}", Toast.LENGTH_LONG)
-                    .show()
+                /*Toast.makeText(context, "Equipo ${it}", Toast.LENGTH_LONG)
+                    .show()*/
+                navController.navigate("${NavigationItem.Details.route}/${team[dat].id}")
+                //navController.navigate("${NavigationItem.Info.route}")
             })
         }
     }

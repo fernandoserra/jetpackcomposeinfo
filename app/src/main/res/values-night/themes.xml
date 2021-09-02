@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.JetpackComposeInfo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <!--<item name="colorPrimary">@color/purple_200</item>-->
+        <item name="colorPrimary">@color/blue_100</item>
+        <!--<item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <item name="colorPrimaryVariant">@color/blue_100</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -16,8 +18,8 @@
 
 
     <style name="Theme.AppSplash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/purple_500</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenBackground">@color/blue_100</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/nbalogo</item>
         <item name="postSplashScreenTheme">@style/Theme.JetpackComposeInfo</item>
     </style>
 
