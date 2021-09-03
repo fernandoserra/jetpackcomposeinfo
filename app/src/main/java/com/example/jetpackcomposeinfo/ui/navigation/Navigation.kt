@@ -68,7 +68,7 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
         }
         composable("${NavigationItem.Details.route}/{id}") {
             it.arguments?.getString("id")?.let { idTeam ->
-                DetailsTeam(idTeam)
+                DetailsTeam(idTeam,viewModel)
             }
 
         }
