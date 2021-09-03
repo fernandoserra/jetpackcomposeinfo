@@ -1,7 +1,7 @@
 package com.example.jetpackcomposeinfo.presentation
 
 import androidx.lifecycle.*
-import com.example.jetpackcomposeinfo.data.model.ReqNBA
+import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.domain.Repository
 import com.example.jetpackcomposeinfo.utils.Resource
@@ -18,4 +18,15 @@ class DataViewModel(private val repo:Repository):ViewModel() {
                 emit(Resource.Failure<List<Team>>(e))
             }
         }
+
+    private val _games = MutableLiveData<Resource<ReqGamesNBA>>()
+
+    fun getGamesTeam(seasons: Int, id: Int): LiveData<Resource<ReqGamesNBA>> {
+        viewModelScope.launch(Dispatchers.IO) {
+            val game = repo.getGamesTeam(seasons,id)
+            _games.postValue(game)
+        }
+        return _games
+    }
+
 }
