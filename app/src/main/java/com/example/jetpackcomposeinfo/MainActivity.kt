@@ -32,6 +32,7 @@ import com.example.jetpackcomposeinfo.ui.navigation.MainScreen
 import com.example.jetpackcomposeinfo.ui.navigation.NavigationItem
 import com.example.jetpackcomposeinfo.ui.theme.JetpackComposeInfoTheme
 import com.example.jetpackcomposeinfo.utils.Resource
+import com.google.gson.Gson
 
 @ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
@@ -78,16 +79,22 @@ fun ShowList(viewModel: DataViewModel,navController: NavController){
 @Composable
 fun RvTeams(team:List<Team>,navController: NavController){
     val context = LocalContext.current
+
+    fun navigateToTeam(team: Team) {
+        val team = Gson().toJson(team)
+        navController.navigate("${NavigationItem.Details.route}/${team}")
+    }
+
     LazyColumn(Modifier.padding(bottom = 60.dp)){
         items(team.size) { dat->
             TeamCard(team = team[dat], onDatosClick = {
                 /*Toast.makeText(context, "Equipo ${it}", Toast.LENGTH_LONG)
                     .show()*/
-                navController.navigate("${NavigationItem.Details.route}/${team[dat].id}")
-                //navController.navigate("${NavigationItem.Info.route}")
+                navigateToTeam(team[dat])
             })
         }
     }
+
 }
 
 @Composable

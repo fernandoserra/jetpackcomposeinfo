@@ -27,15 +27,18 @@ import com.example.jetpackcomposeinfo.CircularProgressBar
 import com.example.jetpackcomposeinfo.application.AppConstants
 import com.example.jetpackcomposeinfo.data.model.DataGame
 import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
+import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
 import com.example.jetpackcomposeinfo.utils.Resource
 
 @Composable
-fun DetailsTeam(idTeam:String, viewModel: DataViewModel){
+//fun DetailsTeam(idTeam:String, viewModel: DataViewModel){
+fun DetailsTeam(team: Team, viewModel: DataViewModel){
 
+    Log.i("DetailsTeam", "DetailsTeam: $team")
     //val result  by viewModel.getGamesTeam().observeAsState(Resource.Success(emptyList()))
     //val result  by viewModel.getGamesTeam(2021,1).observeAsState(null)
-    val result  by viewModel.getGamesTeam(2020,idTeam.toInt()).observeAsState(null)
+    val result  by viewModel.getGamesTeam(2020,1).observeAsState(null)
 
     when(result){
         is Resource.Failure ->{
@@ -108,7 +111,9 @@ fun CardGame(dataGame: DataGame){
                             Image(
                                 painter = painter,
                                 contentDescription = "",
-                                Modifier.height(60.dp).width(60.dp),
+                                Modifier
+                                    .height(60.dp)
+                                    .width(60.dp),
                                 contentScale = ContentScale.Crop
                             )
                         }
@@ -155,7 +160,9 @@ fun CardGame(dataGame: DataGame){
                             Image(
                                 painter = painter,
                                 contentDescription = "",
-                                Modifier.height(50.dp).width(50.dp),
+                                Modifier
+                                    .height(50.dp)
+                                    .width(50.dp),
                                 contentScale = ContentScale.Crop
                             )
                         }

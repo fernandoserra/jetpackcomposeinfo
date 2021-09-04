@@ -8,15 +8,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavType
+import androidx.navigation.compose.*
 import com.example.jetpackcomposeinfo.ShowList
+import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
 import com.example.jetpackcomposeinfo.ui.details.DetailsTeam
 import com.example.jetpackcomposeinfo.ui.favorites.FavoriteView
 import com.example.jetpackcomposeinfo.ui.info.Info
+import com.google.gson.Gson
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
@@ -66,12 +66,16 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
         composable(NavigationItem.Home.route) {
             ShowList(viewModel,navController)
         }
-        composable("${NavigationItem.Details.route}/{id}") {
-            it.arguments?.getString("id")?.let { idTeam ->
-                DetailsTeam(idTeam,viewModel)
-            }
 
+        composable("${NavigationItem.Details.route}/{id}" ,
+            arguments = listOf(navArgument("id") { type = NavType.StringType })
+        ) { backStackEntry ->
+            backStackEntry.arguments?.getString("id")?.let { json ->
+                val team = Gson().fromJson(json, Team::class.java)
+                DetailsTeam(team,viewModel)
+            }
         }
+
         composable(NavigationItem.Favorites.route) {
             FavoriteView()
         }
