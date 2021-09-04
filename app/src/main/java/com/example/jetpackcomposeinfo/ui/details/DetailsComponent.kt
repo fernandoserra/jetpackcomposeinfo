@@ -29,28 +29,33 @@ import com.example.jetpackcomposeinfo.data.model.DataGame
 import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
+import com.example.jetpackcomposeinfo.ui.home.TeamCard
 import com.example.jetpackcomposeinfo.utils.Resource
 
 @Composable
 fun DetailsTeam(team: Team, viewModel: DataViewModel){
 
-    val result  by viewModel.getGamesTeam(2020,team.id).observeAsState(null)
+    Column {
+        TeamCard(team,{})
+        Spacer(modifier = Modifier.height(5.dp))
 
-    when(result){
-        is Resource.Failure ->{
-            CircularProgressBar( isDisplayed = false)
-        }
-        is Resource.Loading ->{
-            CircularProgressBar( isDisplayed = true)
-        }
-        is Resource.Success ->{
-            Log.i("DetailsTeam", "ShowList:  ${(result as Resource.Success<ReqGamesNBA>).data.data.size}")
-            RvGames(team= (result as Resource.Success<ReqGamesNBA>).data.data)
-            CircularProgressBar( isDisplayed = false)
+        val result  by viewModel.getGamesTeam(2020,team.id).observeAsState(null)
+        when(result){
+            is Resource.Failure ->{
+                CircularProgressBar( isDisplayed = false)
+            }
+            is Resource.Loading ->{
+                CircularProgressBar( isDisplayed = true)
+            }
+            is Resource.Success ->{
+                Log.i("DetailsTeam", "ShowList:  ${(result as Resource.Success<ReqGamesNBA>).data.data.size}")
+                RvGames(team= (result as Resource.Success<ReqGamesNBA>).data.data)
+                CircularProgressBar( isDisplayed = false)
+            }
         }
     }
-
 }
+
 
 @ExperimentalCoilApi
 @Composable
@@ -72,7 +77,6 @@ fun RvGames(team:List<DataGame>){
 @ExperimentalCoilApi
 @Composable
 fun CardGame(dataGame: DataGame){
-
 
     val imageLoader = ImageLoader.Builder(LocalContext.current)
         .componentRegistry {
