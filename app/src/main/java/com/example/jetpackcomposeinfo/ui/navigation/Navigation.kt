@@ -68,8 +68,7 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
         }
 
         composable("${NavigationItem.Details.route}/{id}" ,
-            arguments = listOf(navArgument("id") { type = NavType.StringType })
-        ) { backStackEntry ->
+            arguments = listOf(navArgument("id") { type = NavType.StringType })) { backStackEntry ->
             backStackEntry.arguments?.getString("id")?.let { json ->
                 val team = Gson().fromJson(json, Team::class.java)
                 DetailsTeam(team,viewModel)

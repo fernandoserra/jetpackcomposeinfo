@@ -32,13 +32,9 @@ import com.example.jetpackcomposeinfo.presentation.DataViewModel
 import com.example.jetpackcomposeinfo.utils.Resource
 
 @Composable
-//fun DetailsTeam(idTeam:String, viewModel: DataViewModel){
 fun DetailsTeam(team: Team, viewModel: DataViewModel){
 
-    Log.i("DetailsTeam", "DetailsTeam: $team")
-    //val result  by viewModel.getGamesTeam().observeAsState(Resource.Success(emptyList()))
-    //val result  by viewModel.getGamesTeam(2021,1).observeAsState(null)
-    val result  by viewModel.getGamesTeam(2020,1).observeAsState(null)
+    val result  by viewModel.getGamesTeam(2020,team.id).observeAsState(null)
 
     when(result){
         is Resource.Failure ->{
