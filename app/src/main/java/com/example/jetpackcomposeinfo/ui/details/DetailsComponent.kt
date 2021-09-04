@@ -5,8 +5,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -16,8 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.ImageLoader
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.LocalImageLoader
@@ -30,12 +35,56 @@ import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.presentation.DataViewModel
 import com.example.jetpackcomposeinfo.ui.home.TeamCard
+import com.example.jetpackcomposeinfo.ui.navigation.NavigationItem
 import com.example.jetpackcomposeinfo.utils.Resource
 
 @Composable
-fun DetailsTeam(team: Team, viewModel: DataViewModel){
+fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavController){
 
     Column {
+        TopAppBar(
+            title = {
+                Text(
+                    text = team.abbreviation,
+                    /*textAlign = TextAlign.Start,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)*/
+                )
+            },
+            navigationIcon = {
+                IconButton(onClick = {
+                    navController.navigate("${NavigationItem.Home.route}")
+                }) {
+                    Icon(
+                        Icons.Filled.ArrowBack,
+                        contentDescription = "aaa"
+                    )
+                }
+            },
+            actions = {
+
+                IconButton(onClick = {
+                    //navController.navigate("${NavigationItem.Home.route}")
+                }) {
+                    Icon(
+                        Icons.Filled.Favorite,
+                        contentDescription = "aaa"
+                    )
+                }
+
+                IconButton(onClick = {
+                    //navController.navigate("${NavigationItem.Home.route}")
+                }) {
+                    Icon(
+                        Icons.Filled.Search,
+                        contentDescription = "aaa"
+                    )
+                }
+
+            }
+        )
+
         TeamCard(team,{})
         Spacer(modifier = Modifier.height(5.dp))
 

@@ -71,7 +71,7 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
             arguments = listOf(navArgument("id") { type = NavType.StringType })) { backStackEntry ->
             backStackEntry.arguments?.getString("id")?.let { json ->
                 val team = Gson().fromJson(json, Team::class.java)
-                DetailsTeam(team,viewModel)
+                DetailsTeam(team,viewModel,navController)
             }
         }
 
