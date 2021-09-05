@@ -8,9 +8,8 @@ import com.example.jetpackcomposeinfo.application.AppConstants
 import com.example.jetpackcomposeinfo.data.local.team.TeamDao
 import com.example.jetpackcomposeinfo.data.local.team.TeamLocal
 
-
 @Database(entities = [TeamLocal::class], version = 1, exportSchema = false)
-abstract class AppDatabase: RoomDatabase()  {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun teamDao(): TeamDao
 
@@ -19,23 +18,14 @@ abstract class AppDatabase: RoomDatabase()  {
         private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context): AppDatabase {
-            /*val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-            synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    AppConstants.DATABASE_NAME
-                ).addCallback(
-                    WordDatabaseCallback(
-                        scope
-                    )
-                )*/
-            INSTANCE= INSTANCE ?: Room.databaseBuilder(context.applicationContext, AppDatabase::class.java,AppConstants.DATABASE_NAME).build()
 
-                return INSTANCE!!
-            }
+            INSTANCE = INSTANCE ?: Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java,
+                AppConstants.DATABASE_NAME
+            ).build()
+
+            return INSTANCE!!
         }
     }
+}
