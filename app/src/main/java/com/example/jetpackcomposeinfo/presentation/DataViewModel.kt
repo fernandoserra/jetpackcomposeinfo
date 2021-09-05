@@ -21,7 +21,6 @@ class DataViewModel(private val repo:Repository):ViewModel() {
         }
 
     private val _games = MutableLiveData<Resource<ReqGamesNBA>>()
-
     fun getGamesTeam(seasons: Int, id: Int): LiveData<Resource<ReqGamesNBA>> {
         viewModelScope.launch(Dispatchers.IO) {
             val game = repo.getGamesTeam(seasons,id)
@@ -34,6 +33,15 @@ class DataViewModel(private val repo:Repository):ViewModel() {
         viewModelScope.launch {
             repo.inserTeamRoom(teamLocal)
         }
+    }
+
+    private val _favorites = MutableLiveData<Resource<List<TeamLocal>>>()
+    fun getTeamFavoritos(): LiveData<Resource<List<TeamLocal>>> {
+        viewModelScope.launch(Dispatchers.IO) {
+            val favorites = repo.getTeamFavoritos()
+            _favorites.postValue(favorites)
+        }
+        return _favorites
     }
 
 }

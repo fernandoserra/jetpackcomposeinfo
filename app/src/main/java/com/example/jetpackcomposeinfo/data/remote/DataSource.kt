@@ -12,5 +12,6 @@ interface DataSource {
     suspend fun getTeams(): Resource<List<Team>>
     suspend fun getTeam(id: Int) : Resource<Team>
     suspend fun getGamesTeam(seasons: Int, id: Int): Resource<ReqGamesNBA>
-    suspend  fun inserTeamRoom(teamLocal: TeamLocal)
+    suspend fun inserTeamRoom(teamLocal: TeamLocal)
+    suspend fun getTeamFavoritos(): Resource<List<TeamLocal>>
 }

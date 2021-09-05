@@ -24,4 +24,8 @@ class DataSourceImpl(private val appDatabase: AppDatabase):DataSource {
         appDatabase.teamDao().insertTeam(teamLocal)
     }
 
+    override suspend fun getTeamFavoritos(): Resource<List<TeamLocal>> {
+        return Resource.Success(appDatabase.teamDao().getTeamFavoritos())
+    }
+
 }
