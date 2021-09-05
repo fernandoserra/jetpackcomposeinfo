@@ -24,29 +24,6 @@ import coil.decode.SvgDecoder
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.application.AppConstants.BASE_IMG
 
-/*@Composable
-fun TeamCard(team: Team, onDatosClick: (Team) -> Unit) {
-    Surface(shape = RoundedCornerShape(8.dp), elevation = 8.dp, modifier = Modifier.padding(8.dp)) {
-        Column(modifier = Modifier
-            .padding(16.dp)
-            .clickable(onClick = { onDatosClick(team) })) {
-            val imageModifier = Modifier
-                .height(150.dp)
-                .fillMaxWidth()
-                .clip(shape = RoundedCornerShape(8.dp))
-
-            Image(
-                painterResource(R.drawable.img),
-                contentDescription = "",
-                modifier = imageModifier,
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = team.full_name, fontSize = 30.sp, style = MaterialTheme.typography.h2)
-        }
-    }
-}*/
-
 @Composable
 fun TeamCard(team: Team, onDatosClick: (Team) -> Unit) {
 
