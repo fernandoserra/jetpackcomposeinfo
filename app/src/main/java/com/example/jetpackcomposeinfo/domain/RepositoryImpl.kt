@@ -24,7 +24,7 @@ class RepositoryImpl(private val dataSource:DataSource):Repository {
         return dataSource.inserTeamRoom(teamLocal)
     }
 
-    override suspend fun getTeamFavoritos(): Resource<List<TeamLocal>> {
+    override suspend fun getTeamFavoritos(): Resource<List<Team>> {
         return  dataSource.getTeamFavoritos()
     }
 

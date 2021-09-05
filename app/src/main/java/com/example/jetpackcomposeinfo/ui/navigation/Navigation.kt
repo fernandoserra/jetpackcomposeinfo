@@ -76,7 +76,7 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
         }
 
         composable(NavigationItem.Favorites.route) {
-            FavoriteView(viewModel)
+            FavoriteView(viewModel,navController)
         }
         composable(NavigationItem.Info.route) {
             Info()

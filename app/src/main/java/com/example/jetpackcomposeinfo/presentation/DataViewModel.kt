@@ -35,8 +35,8 @@ class DataViewModel(private val repo:Repository):ViewModel() {
         }
     }
 
-    private val _favorites = MutableLiveData<Resource<List<TeamLocal>>>()
-    fun getTeamFavoritos(): LiveData<Resource<List<TeamLocal>>> {
+    private val _favorites = MutableLiveData<Resource<List<Team>>>()
+    fun getTeamFavoritos(): LiveData<Resource<List<Team>>> {
         viewModelScope.launch(Dispatchers.IO) {
             val favorites = repo.getTeamFavoritos()
             _favorites.postValue(favorites)
