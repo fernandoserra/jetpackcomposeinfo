@@ -1,5 +1,6 @@
 package com.example.jetpackcomposeinfo.domain
 
+import com.example.jetpackcomposeinfo.data.local.team.TeamLocal
 import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.data.remote.DataSource
@@ -18,5 +19,10 @@ class RepositoryImpl(private val dataSource:DataSource):Repository {
     override suspend fun getGamesTeam(seasons: Int, id: Int): Resource<ReqGamesNBA> {
         return  dataSource.getGamesTeam(seasons,id)
     }
+
+    override suspend fun inserTeamRoom(teamLocal: TeamLocal) {
+        return dataSource.inserTeamRoom(teamLocal)
+    }
+
 
 }

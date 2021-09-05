@@ -1,6 +1,7 @@
 package com.example.jetpackcomposeinfo.presentation
 
 import androidx.lifecycle.*
+import com.example.jetpackcomposeinfo.data.local.team.TeamLocal
 import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.domain.Repository
@@ -27,6 +28,12 @@ class DataViewModel(private val repo:Repository):ViewModel() {
             _games.postValue(game)
         }
         return _games
+    }
+
+    fun inserTeamRoom(teamLocal:TeamLocal){
+        viewModelScope.launch {
+            repo.inserTeamRoom(teamLocal)
+        }
     }
 
 }

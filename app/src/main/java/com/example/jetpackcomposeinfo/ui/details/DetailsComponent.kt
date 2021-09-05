@@ -1,6 +1,8 @@
 package com.example.jetpackcomposeinfo.ui.details
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,6 +32,7 @@ import coil.compose.rememberImagePainter
 import coil.decode.SvgDecoder
 import com.example.jetpackcomposeinfo.CircularProgressBar
 import com.example.jetpackcomposeinfo.application.AppConstants
+import com.example.jetpackcomposeinfo.data.local.team.TeamLocal
 import com.example.jetpackcomposeinfo.data.model.DataGame
 import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
@@ -40,6 +43,8 @@ import com.example.jetpackcomposeinfo.utils.Resource
 
 @Composable
 fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavController){
+
+    val context = LocalContext.current
 
     Column {
         TopAppBar(
@@ -65,7 +70,8 @@ fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavControlle
             actions = {
 
                 IconButton(onClick = {
-                    //navController.navigate("${NavigationItem.Home.route}")
+                    ////navController.navigate("${NavigationItem.Home.route}")
+                    insertTeam(team,viewModel,context)
                 }) {
                     Icon(
                         Icons.Filled.Favorite,
@@ -105,6 +111,15 @@ fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavControlle
     }
 }
 
+
+fun insertTeam(team:Team, viewModel: DataViewModel,context: Context){
+   // val context = LocalContext.current
+    viewModel.inserTeamRoom(TeamLocal(0,team.id,team.abbreviation,team.city,
+    team.conference,team.division,team.full_name,team.name))
+
+    Toast.makeText(context, "Se almaceno ${team.name}", Toast.LENGTH_LONG)
+        .show()
+}
 
 @ExperimentalCoilApi
 @Composable
@@ -230,3 +245,5 @@ fun CardGame(dataGame: DataGame){
 fun PreviewCardGame(){
     //CardGame()
 }
+
+

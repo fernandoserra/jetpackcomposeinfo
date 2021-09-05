@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
+import com.example.jetpackcomposeinfo.data.local.AppDatabase
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.data.remote.DataSourceImpl
 import com.example.jetpackcomposeinfo.domain.RepositoryImpl
@@ -37,7 +38,8 @@ import com.google.gson.Gson
 @ExperimentalAnimationApi
 class MainActivity : ComponentActivity() {
 
-    val viewModel by viewModels<DataViewModel>{ DataVMFactory(RepositoryImpl(DataSourceImpl())) }
+    val viewModel by viewModels<DataViewModel>{ DataVMFactory(RepositoryImpl(DataSourceImpl(
+        AppDatabase.getDatabase(this)))) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Design_NoActionBar)
