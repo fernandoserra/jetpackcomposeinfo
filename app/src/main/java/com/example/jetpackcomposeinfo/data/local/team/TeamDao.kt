@@ -11,7 +11,8 @@ interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeam(teamLocal: TeamLocal)
 
-   // @Query("SELECT id FROM team_local WHERE id=:id")
-   // fun findTeam(id:String): String
+   @Query("SELECT * FROM team_local WHERE id=:id")
+   fun findTeam(id:String): List<TeamLocal>
+
 
 }
