@@ -5,8 +5,11 @@ import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.data.remote.DataSource
 import com.example.jetpackcomposeinfo.utils.Resource
+import javax.inject.Inject
 
-class RepositoryImpl(private val dataSource:DataSource):Repository {
+
+class RepositoryImpl @Inject constructor(private val dataSource:DataSource):Repository {
+//class RepositoryImpl(private val dataSource:DataSource):Repository {
 
     override suspend fun getTeams():  Resource<List<Team>> {
         return  dataSource.getTeams()

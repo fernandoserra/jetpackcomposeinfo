@@ -59,6 +59,7 @@ fun BottomNavigationBar(navController: NavController) {
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun NavigationComponent(navController: NavHostController, viewModel: DataViewModel) {
 
@@ -84,6 +85,7 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
     }
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun MainScreen(viewModel: DataViewModel) {
     val navController = rememberNavController()

@@ -32,12 +32,17 @@ import com.example.jetpackcomposeinfo.ui.navigation.NavigationItem
 import com.example.jetpackcomposeinfo.ui.theme.JetpackComposeInfoTheme
 import com.example.jetpackcomposeinfo.utils.Resource
 import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalMaterialApi
 @ExperimentalAnimationApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val viewModel by viewModels<DataViewModel>{ DataVMFactory(RepositoryImpl(DataSourceImpl(
-        AppDatabase.getDatabase(this)))) }
+    /*val viewModel by viewModels<DataViewModel>{ DataVMFactory(RepositoryImpl(DataSourceImpl(
+        AppDatabase.getDatabase(this)))) }*/
+
+    private val viewModel by viewModels<DataViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Design_NoActionBar)
