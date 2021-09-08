@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -114,7 +113,7 @@ fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavControlle
 
 fun insertTeam(team:Team, viewModel: DataViewModel,context: Context){
    // val context = LocalContext.current
-    viewModel.inserTeamRoom(TeamLocal(0,team.id,team.abbreviation,team.city,
+    viewModel.insertTeamRoom(TeamLocal(0,team.id,team.abbreviation,team.city,
     team.conference,team.division,team.full_name,team.name))
 
     Toast.makeText(context, "Se almaceno ${team.name}", Toast.LENGTH_LONG)

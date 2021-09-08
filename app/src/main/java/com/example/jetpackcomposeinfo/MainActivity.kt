@@ -11,9 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -59,6 +57,7 @@ class MainActivity : ComponentActivity() {
 
 
 
+@ExperimentalMaterialApi
 @Composable
 fun ShowList(viewModel: DataViewModel,navController: NavController){
     val result  by viewModel.getTeams.observeAsState(Resource.Success(emptyList()))
@@ -78,6 +77,7 @@ fun ShowList(viewModel: DataViewModel,navController: NavController){
 
 }
 
+@ExperimentalMaterialApi
 @Composable
 fun RvTeams(team:List<Team>,navController: NavController){
     val context = LocalContext.current
@@ -90,8 +90,6 @@ fun RvTeams(team:List<Team>,navController: NavController){
     LazyColumn(Modifier.padding(bottom = 60.dp)){
         items(team.size) { dat->
             TeamCard(team = team[dat], onDatosClick = {
-                /*Toast.makeText(context, "Equipo ${it}", Toast.LENGTH_LONG)
-                    .show()*/
                 navigateToTeam(team[dat])
             })
         }
@@ -102,7 +100,10 @@ fun RvTeams(team:List<Team>,navController: NavController){
 @Composable
 fun CircularProgressBar(isDisplayed:Boolean){
     if(isDisplayed){
-        Row(Modifier.padding(top = 10.dp).fillMaxWidth(),horizontalArrangement = Arrangement.Center) {
+        Row(
+            Modifier
+                .padding(top = 10.dp)
+                .fillMaxWidth(),horizontalArrangement = Arrangement.Center) {
             CircularProgressIndicator()
         }
     }

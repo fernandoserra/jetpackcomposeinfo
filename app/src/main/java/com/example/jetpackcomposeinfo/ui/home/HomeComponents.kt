@@ -21,8 +21,8 @@ import coil.ImageLoader
 import coil.compose.LocalImageLoader
 import coil.compose.rememberImagePainter
 import coil.decode.SvgDecoder
-import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.application.AppConstants.BASE_IMG
+import com.example.jetpackcomposeinfo.data.model.Team
 
 @Composable
 fun TeamCard(team: Team, onDatosClick: (Team) -> Unit) {
