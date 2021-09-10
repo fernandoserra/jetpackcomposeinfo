@@ -1,6 +1,5 @@
 package com.example.jetpackcomposeinfo.data.remote
 
-import com.example.jetpackcomposeinfo.data.local.AppDatabase
 import com.example.jetpackcomposeinfo.data.local.team.TeamDao
 import com.example.jetpackcomposeinfo.data.local.team.TeamLocal
 import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
@@ -10,7 +9,6 @@ import javax.inject.Inject
 
 
 class DataSourceImpl @Inject constructor(private val teamDao: TeamDao):DataSource {
-//class DataSourceImpl(private val appDatabase: AppDatabase):DataSource {
 
     override suspend fun getTeams(): Resource<List<Team>> {
         return  Resource.Success(RetrofitClient.webService.getTeams().data)
@@ -24,13 +22,11 @@ class DataSourceImpl @Inject constructor(private val teamDao: TeamDao):DataSourc
         return  Resource.Success(RetrofitClient.webService.getGamesTeam(seasons,id))
     }
 
-    override suspend fun inserTeamRoom(teamLocal: TeamLocal) {
-        //appDatabase.teamDao().insertTeam(teamLocal)
+    override suspend fun insertTeamRoom(teamLocal: TeamLocal) {
         teamDao.insertTeam(teamLocal)
     }
 
-    override suspend fun getTeamFavoritos(): Resource<List<Team>> {
-        //return Resource.Success(appDatabase.teamDao().getTeamFavoritos())
+    override suspend fun getTeamFavorites(): Resource<List<Team>> {
         return Resource.Success(teamDao.getTeamFavoritos())
     }
 

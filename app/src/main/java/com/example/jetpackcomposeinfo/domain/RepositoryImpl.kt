@@ -7,9 +7,7 @@ import com.example.jetpackcomposeinfo.data.remote.DataSource
 import com.example.jetpackcomposeinfo.utils.Resource
 import javax.inject.Inject
 
-
 class RepositoryImpl @Inject constructor(private val dataSource:DataSource):Repository {
-//class RepositoryImpl(private val dataSource:DataSource):Repository {
 
     override suspend fun getTeams():  Resource<List<Team>> {
         return  dataSource.getTeams()
@@ -23,13 +21,12 @@ class RepositoryImpl @Inject constructor(private val dataSource:DataSource):Repo
         return  dataSource.getGamesTeam(seasons,id)
     }
 
-    override suspend fun inserTeamRoom(teamLocal: TeamLocal) {
-        return dataSource.inserTeamRoom(teamLocal)
+    override suspend fun insertTeamRoom(teamLocal: TeamLocal) {
+        return dataSource.insertTeamRoom(teamLocal)
     }
 
-    override suspend fun getTeamFavoritos(): Resource<List<Team>> {
-        return  dataSource.getTeamFavoritos()
+    override suspend fun getTeamFavorites(): Resource<List<Team>> {
+        return  dataSource.getTeamFavorites()
     }
-
 
 }

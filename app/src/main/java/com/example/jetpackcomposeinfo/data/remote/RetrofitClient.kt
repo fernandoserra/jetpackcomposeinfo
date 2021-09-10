@@ -17,7 +17,7 @@ object RetrofitClient {
         this.addInterceptor(interceptor)
     }.build()
 
-    val webService by lazy {
+    val webService: WebService by lazy {
         Retrofit.Builder()
             .baseUrl(AppConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))

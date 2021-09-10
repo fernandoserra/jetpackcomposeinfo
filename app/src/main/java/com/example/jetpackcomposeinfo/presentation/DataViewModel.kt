@@ -10,9 +10,7 @@ import com.example.jetpackcomposeinfo.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class DataViewModel @ViewModelInject constructor(private val repo:Repository):ViewModel() {
-//class DataViewModel(private val repo:Repository):ViewModel() {
 
     val getTeams = liveData(Dispatchers.IO) {
             emit(Resource.Loading())
@@ -34,14 +32,14 @@ class DataViewModel @ViewModelInject constructor(private val repo:Repository):Vi
 
     fun insertTeamRoom(teamLocal:TeamLocal){
         viewModelScope.launch {
-            repo.inserTeamRoom(teamLocal)
+            repo.insertTeamRoom(teamLocal)
         }
     }
 
     private val _favorites = MutableLiveData<Resource<List<Team>>>()
     fun getTeamFavorites(): LiveData<Resource<List<Team>>> {
         viewModelScope.launch(Dispatchers.IO) {
-            val favorites = repo.getTeamFavoritos()
+            val favorites = repo.getTeamFavorites()
             _favorites.postValue(favorites)
         }
         return _favorites

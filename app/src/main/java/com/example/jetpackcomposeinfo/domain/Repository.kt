@@ -10,7 +10,7 @@ interface Repository {
     suspend fun getTeams(): Resource<List<Team>>
     suspend fun getTeam(id: Int) : Resource<Team>
     suspend fun getGamesTeam(seasons: Int, id: Int):Resource<ReqGamesNBA>
-    suspend  fun inserTeamRoom(teamLocal: TeamLocal)
-    suspend fun getTeamFavoritos(): Resource<List<Team>>
+    suspend  fun insertTeamRoom(teamLocal: TeamLocal)
+    suspend fun getTeamFavorites(): Resource<List<Team>>
 
 }

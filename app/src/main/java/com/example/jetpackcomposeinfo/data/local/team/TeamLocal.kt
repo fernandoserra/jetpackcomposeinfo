@@ -7,7 +7,6 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
-
 @Parcelize
 @Entity(tableName = "team_local", indices = [Index(value = ["id"], unique = true)])
 data class TeamLocal(

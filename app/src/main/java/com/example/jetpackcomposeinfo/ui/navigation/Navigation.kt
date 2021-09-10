@@ -1,6 +1,5 @@
 package com.example.jetpackcomposeinfo.ui.navigation
 
-import android.util.Log
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

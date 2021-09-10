@@ -20,8 +20,6 @@ data class Info(val icon:Int=0, val content:String="", val url:String="")
 
 @Composable
 fun Info(){
-    //Text(text = "Information")
-
     RvInfo(info = listOf(
         Info(R.drawable.ic_home,"Demo de información  1"),
         Info(R.drawable.ic_home,"Demo de información  2"),
@@ -67,8 +65,6 @@ fun CardInfo(info:Info){
 fun PreviewCardInfo(){
     CardInfo(Info(R.drawable.ic_contact,"Fernando Serra"))
 }
-
-
 
 @Composable
 fun RvInfo(info:List<Info>){
