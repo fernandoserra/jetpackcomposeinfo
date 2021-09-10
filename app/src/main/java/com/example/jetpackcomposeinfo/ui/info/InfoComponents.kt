@@ -21,8 +21,10 @@ data class Info(val icon:Int=0, val content:String="", val url:String="")
 @Composable
 fun Info(){
     RvInfo(info = listOf(
-        Info(R.drawable.ic_home,"Demo de información  1"),
-        Info(R.drawable.ic_home,"Demo de información  2"),
+        Info(R.drawable.jetpack_compose,"Jetpack Compose"),
+        Info(R.drawable.database,"Room"),
+        Info(R.drawable.dagger_hilt,"Dagger Hilt"),
+        Info(R.drawable.ic_api,"https://www.balldontlie.io/"),
         Info(R.drawable.ic_contact,"Fernando Serra")
     ))
 }
