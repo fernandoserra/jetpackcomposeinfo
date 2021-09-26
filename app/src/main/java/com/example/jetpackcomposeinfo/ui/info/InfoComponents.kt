@@ -23,7 +23,7 @@ fun Info(){
     RvInfo(info = listOf(
         Info(R.drawable.jetpack_compose,"Jetpack Compose"),
         Info(R.drawable.database_db,"Room"),
-        Info(R.drawable.dagger_hilt,"Dagger Hilt"),
+        Info(R.drawable.injection,"Dagger Hilt"),
         Info(R.drawable.ic_api,"https://www.balldontlie.io/"),
         Info(R.drawable.ic_contact,"Fernando Serra")
     ))
@@ -51,7 +51,7 @@ fun CardInfo(info:Info){
                    Column(
                        modifier = Modifier
                            .height(40.dp)
-                           .weight(1f),
+                           .weight(1f).padding(start = 10.dp),
                        verticalArrangement = Arrangement.Center,
                        horizontalAlignment = Alignment.Start) {
                         Text(info.content)
