@@ -22,7 +22,7 @@ data class Info(val icon:Int=0, val content:String="", val url:String="")
 fun Info(){
     RvInfo(info = listOf(
         Info(R.drawable.jetpack_compose,"Jetpack Compose"),
-        Info(R.drawable.database,"Room"),
+        Info(R.drawable.database_db,"Room"),
         Info(R.drawable.dagger_hilt,"Dagger Hilt"),
         Info(R.drawable.ic_api,"https://www.balldontlie.io/"),
         Info(R.drawable.ic_contact,"Fernando Serra")
