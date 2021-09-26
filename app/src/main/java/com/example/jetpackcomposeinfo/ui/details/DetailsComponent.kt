@@ -112,7 +112,6 @@ fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavControlle
 
 
 fun insertTeam(team:Team, viewModel: DataViewModel,context: Context){
-   // val context = LocalContext.current
     viewModel.insertTeamRoom(TeamLocal(0,team.id,team.abbreviation,team.city,
     team.conference,team.division,team.full_name,team.name))
 

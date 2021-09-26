@@ -88,10 +88,8 @@ fun NavigationComponent(navController: NavHostController, viewModel: DataViewMod
 @Composable
 fun MainScreen(viewModel: DataViewModel) {
     val navController = rememberNavController()
-
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-
 
     Scaffold(
         topBar = {  }, //TopBar()

@@ -56,7 +56,6 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
 @ExperimentalMaterialApi
 @Composable
 fun ShowList(viewModel: DataViewModel,navController: NavController){

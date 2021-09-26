@@ -42,7 +42,6 @@ fun FavoriteView(viewModel: DataViewModel,navController: NavController){
         is Resource.Success -> {
             Log.i("FavoriteView", "ShowList:  ${(result as Resource.Success<MutableList<Team>>).data.size}")
 
-
             RvTeamsFavorites(team= (result as Resource.Success<MutableList<Team>>).data,navController)
             CircularProgressBar( isDisplayed = false)
         }
@@ -53,7 +52,6 @@ fun FavoriteView(viewModel: DataViewModel,navController: NavController){
 @ExperimentalMaterialApi
 @Composable
 fun RvTeamsFavorites(team: MutableList<Team>, navController: NavController){
-    val context = LocalContext.current
 
     fun navigateToTeam(team: Team) {
         val team = Gson().toJson(team)
@@ -66,7 +64,6 @@ fun RvTeamsFavorites(team: MutableList<Team>, navController: NavController){
             val state = rememberDismissState(
                 confirmStateChange = {
                     if(it== DismissValue.DismissedToStart){
-
                         Log.i("RvTeamsFavorites", "RvTeamsFavorites: ${dat}")
                         team.remove(team[dat])
                         Log.i("RvTeamsFavorites", "RvTeamsFavorites: ${team.size}")
@@ -76,7 +73,6 @@ fun RvTeamsFavorites(team: MutableList<Team>, navController: NavController){
             )
 
             /*AnimatedVisibility(visibleState = ) {
-                
             }*/
 
 
