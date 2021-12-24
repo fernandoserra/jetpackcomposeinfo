@@ -7,6 +7,9 @@ import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.utils.Resource
 import javax.inject.Inject
 
+/**
+ * @Author: Fernando Serra
+ */
 
 class DataSourceImpl @Inject constructor(private val teamDao: TeamDao):DataSource {
 

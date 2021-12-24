@@ -15,6 +15,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposeinfo.R
 
+/**
+ * @Author: Fernando Serra
+ */
+
 data class Info(val icon:Int=0, val content:String="", val url:String="")
 
 @Composable

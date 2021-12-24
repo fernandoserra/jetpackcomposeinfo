@@ -7,6 +7,10 @@ import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.utils.Resource
 import retrofit2.http.Path
 
+/**
+ * @Author: Fernando Serra
+ */
+
 interface DataSource {
 
     suspend fun getTeams(): Resource<List<Team>>

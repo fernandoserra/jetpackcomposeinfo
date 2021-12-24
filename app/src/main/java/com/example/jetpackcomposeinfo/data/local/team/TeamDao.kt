@@ -6,6 +6,10 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.jetpackcomposeinfo.data.model.Team
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @Dao
 interface TeamDao {
 

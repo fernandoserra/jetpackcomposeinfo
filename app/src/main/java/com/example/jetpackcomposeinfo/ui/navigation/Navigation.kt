@@ -17,6 +17,10 @@ import com.example.jetpackcomposeinfo.ui.favorites.FavoriteView
 import com.example.jetpackcomposeinfo.ui.info.Info
 import com.google.gson.Gson
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(

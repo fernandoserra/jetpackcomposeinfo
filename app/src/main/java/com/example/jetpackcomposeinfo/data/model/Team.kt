@@ -1,5 +1,9 @@
 package com.example.jetpackcomposeinfo.data.model
 
+/**
+ * @Author: Fernando Serra
+ */
+
 data class Team (
     val id: Int=0,
     val abbreviation: String="",

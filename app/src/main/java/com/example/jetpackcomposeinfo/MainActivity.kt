@@ -32,6 +32,10 @@ import com.example.jetpackcomposeinfo.utils.Resource
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @AndroidEntryPoint

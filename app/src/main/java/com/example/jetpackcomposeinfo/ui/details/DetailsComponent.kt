@@ -40,6 +40,10 @@ import com.example.jetpackcomposeinfo.ui.home.TeamCard
 import com.example.jetpackcomposeinfo.ui.navigation.NavigationItem
 import com.example.jetpackcomposeinfo.utils.Resource
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @Composable
 fun DetailsTeam(team: Team, viewModel: DataViewModel,navController: NavController){
 

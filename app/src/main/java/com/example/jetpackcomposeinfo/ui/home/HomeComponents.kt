@@ -24,6 +24,10 @@ import coil.decode.SvgDecoder
 import com.example.jetpackcomposeinfo.application.AppConstants.BASE_IMG
 import com.example.jetpackcomposeinfo.data.model.Team
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @Composable
 fun TeamCard(team: Team, onDatosClick: (Team) -> Unit) {
 

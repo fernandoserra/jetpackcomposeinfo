@@ -26,6 +26,10 @@ import com.example.jetpackcomposeinfo.ui.navigation.NavigationItem
 import com.example.jetpackcomposeinfo.utils.Resource
 import com.google.gson.Gson
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @ExperimentalMaterialApi
 @Composable
 fun FavoriteView(viewModel: DataViewModel,navController: NavController){

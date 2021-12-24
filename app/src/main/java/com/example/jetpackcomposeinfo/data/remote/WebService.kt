@@ -7,6 +7,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * @Author: Fernando Serra
+ */
+
 interface WebService {
 
     @GET("teams")

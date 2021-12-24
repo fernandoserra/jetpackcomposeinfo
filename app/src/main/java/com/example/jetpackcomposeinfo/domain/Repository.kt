@@ -5,6 +5,10 @@ import com.example.jetpackcomposeinfo.data.model.ReqGamesNBA
 import com.example.jetpackcomposeinfo.data.model.Team
 import com.example.jetpackcomposeinfo.utils.Resource
 
+/**
+ * @Author: Fernando Serra
+ */
+
 interface Repository {
 
     suspend fun getTeams(): Resource<List<Team>>

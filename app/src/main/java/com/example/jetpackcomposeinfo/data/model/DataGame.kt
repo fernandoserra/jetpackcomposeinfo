@@ -1,5 +1,9 @@
 package com.example.jetpackcomposeinfo.data.model
 
+/**
+ * @Author: Fernando Serra
+ */
+
 data class DataGame(
     val id: Long,
     val date: String,

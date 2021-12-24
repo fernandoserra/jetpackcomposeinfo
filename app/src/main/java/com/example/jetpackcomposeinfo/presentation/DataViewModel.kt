@@ -10,6 +10,10 @@ import com.example.jetpackcomposeinfo.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * @Author: Fernando Serra
+ */
+
 class DataViewModel @ViewModelInject constructor(private val repo:Repository):ViewModel() {
 
     val getTeams = liveData(Dispatchers.IO) {

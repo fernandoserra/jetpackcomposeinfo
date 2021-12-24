@@ -7,6 +7,10 @@ import com.example.jetpackcomposeinfo.data.remote.DataSource
 import com.example.jetpackcomposeinfo.utils.Resource
 import javax.inject.Inject
 
+/**
+ * @Author: Fernando Serra
+ */
+
 class RepositoryImpl @Inject constructor(private val dataSource:DataSource):Repository {
 
     override suspend fun getTeams():  Resource<List<Team>> {

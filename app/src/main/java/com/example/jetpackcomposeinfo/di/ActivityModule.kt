@@ -9,6 +9,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @Module
 @InstallIn(ActivityRetainedComponent::class)
 abstract class ActivityModule {

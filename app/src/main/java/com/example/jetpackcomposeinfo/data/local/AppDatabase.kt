@@ -8,6 +8,10 @@ import com.example.jetpackcomposeinfo.application.AppConstants
 import com.example.jetpackcomposeinfo.data.local.team.TeamDao
 import com.example.jetpackcomposeinfo.data.local.team.TeamLocal
 
+/**
+ * @Author: Fernando Serra
+ */
+
 @Database(entities = [TeamLocal::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
